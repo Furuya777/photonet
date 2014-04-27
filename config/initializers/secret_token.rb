@@ -9,4 +9,17 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Photonet::Application.config.secret_key_base = 'd3c96f19b60d9fc47c1f96cf2c42f07a56b53e04287a940bdcfaddee3d8fb36f51faf464f9d3202b226467abc895699537129b7049fc2784ac7996a8f4c428a5'
+require 'securerandom'
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+end end
+
+Photonet::Application.config.secret_key_base = secure_token
