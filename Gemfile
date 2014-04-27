@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '~>2.14.0'
 end
 
 group :test do
@@ -34,12 +34,15 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'therubyracer'
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'jpmobile'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
+gem 'slim'
 
 group :production do
   gem 'pg', '0.15.1'
