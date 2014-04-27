@@ -1,4 +1,9 @@
 Photonet::Application.routes.draw do
+  root "static_pages#home"
+  get "static_pages/help"
+  get "static_pages/about"
+  resources :photos
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +44,7 @@ Photonet::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
