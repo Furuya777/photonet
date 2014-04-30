@@ -6,6 +6,7 @@ table class="table table-striped"
     tr
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:file_name)
+      th= model_class.human_attribute_name(:image)
       th= model_class.human_attribute_name(:title)
       th= model_class.human_attribute_name(:content)
       th= model_class.human_attribute_name(:created_at)
@@ -15,6 +16,8 @@ table class="table table-striped"
       tr
         td= link_to photo.id, photo_path(photo)
         td= photo.file_name
+        td
+          = image_tag photo.image.thumb.url if photo.image?
         td= photo.title
         td= photo.content
         td=l photo.created_at

@@ -40,7 +40,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'jpmobile'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 gem 'kaminari'
 gem 'slim'
 
