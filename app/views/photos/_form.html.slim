@@ -2,11 +2,11 @@
   .control-group
     = f.label :content, :class => 'control-label'
     .controls
+      - if f.object.image?
+        = image_tag f.object.image.thumb.url
+        br
       = f.file_field :image, :class => 'file_field'
-  .control-group
-    = f.label :file_name, :class => 'control-label'
-    .controls
-      = f.text_field :file_name, :class => 'text_field'
+      = f.hidden_field :image_cache
   .control-group
     = f.label :title, :class => 'control-label'
     .controls
