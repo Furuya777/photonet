@@ -1,4 +1,6 @@
 Photonet::Application.routes.draw do
+  resources :tags
+
   root "static_pages#home"
   get "static_pages/help"
   get "static_pages/about"
