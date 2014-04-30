@@ -23,12 +23,11 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.brand href="#"Photonet
+          a.brand href="/"Photonet
           .container-fluid.nav-collapse
             ul.nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              li= link_to "about", static_pages_about_path
+              li= link_to "help", static_pages_help_path
 
     .container-fluid
 
@@ -37,9 +36,7 @@ html lang="en"
           .well.sidebar-nav
             ul.nav.nav-list
               li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              li= link_to "photo", photos_path
         .span9
           = bootstrap_flash
           = yield
