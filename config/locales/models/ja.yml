@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      photo: photo
+      tag: tag
+    attributes:
+      photo:
+        id: ID
+        image: 写真
+        title: タイトル
+        tag: タグ
+        content: 説明
+        created_at: 作成日
+      tag:
+        id: ID
+        name: 名前
+        created_at: 作成日
+
