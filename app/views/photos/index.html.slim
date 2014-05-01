@@ -1,32 +1,24 @@
 - model_class = Photo
-div class="page-header"
+.page-header
   h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-table class="table table-striped"
-  thead
-    tr
-      th= model_class.human_attribute_name(:id)
-      th= model_class.human_attribute_name(:image)
-      th= model_class.human_attribute_name(:tag)
-      th= model_class.human_attribute_name(:title)
-      th= model_class.human_attribute_name(:content)
-      th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', :default => t("helpers.actions")
-  tbody
-    - @photos.each do |photo|
-      tr
-        td= link_to photo.id, photo_path(photo)
-        td
-          = image_tag photo.image.thumb.url if photo.image?
-        td
+.new-link
+  = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
+ul.clearfix
+  - @photos.each do |photo|
+    li.span2
+      .thumbnail
+        h4= link_to photo.title, photo_path(photo)
+        = image_tag photo.image.thumb.url
+        p
           - photo.tags.each do |tag|
-            = "#{tag.name} "
-        td= photo.title
-        td= photo.content
-        td=l photo.created_at
-        td
+            span.label= "#{tag.name} "
+            '
+        h5= photo.content
+        h6
+          = "#{model_class.human_attribute_name(:updated_at)}:#{l photo.updated_at}"
+          br
+          = "#{model_class.human_attribute_name(:created_at)}:#{l photo.created_at}"
+        h6
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_photo_path(photo), :class => 'btn btn-mini'
           '
           = link_to t('.destroy', :default => t("helpers.links.destroy")), photo_path(photo), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
-

@@ -131,13 +131,13 @@ ja:
     select:
       prompt: 選択してください。
     submit:
-      create: 登録
-      submit: 保存
-      update: 更新
+      create: 登 録
+      submit: 保 存
+      update: 更 新
     links:
-      new: 新規
-      edit: 更新
-      destroy: 削除
+      new: 新規作成
+      edit: 更 新
+      destroy: 削 除
     actions: ""
   number:
     currency:
@@ -193,7 +193,7 @@ ja:
   time:
     am: 午前
     formats:
-      default: ! '%Y/%m/%d %H:%M:%S'
+      default: ! '%Y/%m/%d %H:%M'
       long: ! '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
       short: ! '%y/%m/%d %H:%M'
     pm: 午後

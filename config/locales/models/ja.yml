@@ -10,9 +10,11 @@ ja:
         title: タイトル
         tag: タグ
         content: 説明
-        created_at: 作成日
+        updated_at: 更新日時
+        created_at: 作成日時
       tag:
         id: ID
         name: 名前
-        created_at: 作成日
+        updated_at: 更新日時
+        created_at: 作成日時
 
