@@ -15,6 +15,14 @@
     = f.label :content, :class => 'control-label'
     .controls
       = f.text_field :content, :class => 'text_field'
+  .control-group
+    = f.label :tag, :class => 'control-label'
+    .controls
+      = f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |tag|
+        = tag.label do
+          = tag.check_box
+          = tag.text
+
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     '

@@ -17,6 +17,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.tag_ids = params[:photo][:tag_ids]
 
     respond_to do |format|
       if @photo.save
@@ -30,8 +31,12 @@ class PhotosController < ApplicationController
   end
 
   def update
+    @photo = Photo.find(params[:id])
+    @photo.attributes = photo_params
+    @photo.tag_ids = params[:photo][:tag_ids]
+
     respond_to do |format|
-      if @photo.update(photo_params)
+      if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
