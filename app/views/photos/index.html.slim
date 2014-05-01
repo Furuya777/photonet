@@ -5,10 +5,10 @@
   = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
 ul.clearfix
   - @photos.each do |photo|
-    li.span2
-      .thumbnail
+    li.span3
+      .thumbnail.padding-w20h4
         h4= link_to photo.title, photo_path(photo)
-        = image_tag photo.image.thumb.url
+        = image_tag photo.image.thumb.url, class: 'height-200'
         p
           - photo.tags.each do |tag|
             span.label= "#{tag.name} "
