@@ -3,7 +3,7 @@ div class="page-header"
   h1=t '.title', :default => model_class.model_name.human.titleize
 
 p
-  = image_tag @photo.image.url
+  = image_tag @photo.decorate.image_url(:show)
 p
   strong= model_class.human_attribute_name(:title) + ':'
   br

@@ -8,7 +8,7 @@ ul.clearfix
     li.span3
       .thumbnail.padding-w20h4
         h4= link_to photo.title, photo_path(photo)
-        = image_tag photo.image.thumb.url, class: 'height-200'
+        = image_tag photo.decorate.image_url(:thumb), class: 'height-200'
         p
           - photo.tags.each do |tag|
             span.label= "#{tag.name} "

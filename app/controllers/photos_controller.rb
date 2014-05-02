@@ -21,6 +21,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
+        copy_images
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @photo }
       else
@@ -37,6 +38,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
+        copy_images
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
@@ -63,5 +65,13 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:title, :content, :image, :image_cache)
+    end
+
+    def copy_images
+      file_dir = "#{Rails.root}/public/uploads/photo/image/#{@photo.id}/"
+      FileUtils.mkdir(file_dir) unless File.directory?(file_dir)
+
+      FileUtils.cp("#{Rails.root}#{@photo.image.url(:thumb)}", "#{Rails.root}/public#{@photo.image.url(:thumb)}")
+      FileUtils.cp("#{Rails.root}#{@photo.image.url(:show)}", "#{Rails.root}/public#{@photo.image.url(:show)}")
     end
 end

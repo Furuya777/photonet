@@ -43,6 +43,7 @@ gem 'carrierwave'
 gem 'rmagick', :require => 'RMagick'
 gem 'kaminari'
 gem 'slim'
+gem 'draper', '~> 1.0'
 
 group :production do
   gem 'pg', '0.15.1'
