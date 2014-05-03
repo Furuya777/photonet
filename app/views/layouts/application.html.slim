@@ -26,21 +26,13 @@ html lang="ja"
           a.brand href="/"Photonet
           .container-fluid.nav-collapse
             ul.nav
+              li= link_to "photo", photos_path
+              li= link_to "tag", tags_path
               li= link_to "about", static_pages_about_path
               li= link_to "help", static_pages_help_path
 
-    .container-fluid
-
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "photo", photos_path
-              li= link_to "tag", tags_path
-        .span9
-          = bootstrap_flash
-          = yield
+    .container
+      = yield
 
       footer
         p &copy; Company 2014

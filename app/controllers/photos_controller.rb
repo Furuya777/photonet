@@ -2,7 +2,11 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @photos = Photo.all
+    if params[:tag].present?
+      @photos = Photo.tag(params[:tag]).order_created_at
+    else
+      @photos = Photo.all.order_created_at
+    end
   end
 
   def show
@@ -32,7 +36,6 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo = Photo.find(params[:id])
     @photo.attributes = photo_params
     @photo.tag_ids = params[:photo][:tag_ids]
 

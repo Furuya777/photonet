@@ -35,8 +35,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'therubyracer'
-gem "less-rails"
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+# gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'devise'
 gem 'jpmobile'
 gem 'carrierwave'

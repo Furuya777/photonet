@@ -1,17 +1,20 @@
 - model_class = Photo
 .page-header
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-.new-link
-  = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
-ul.clearfix
+  .row
+    .span10
+      h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+    .span2
+      .new-link
+        = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
+.row
   - @photos.each do |photo|
-    li.span3
-      .thumbnail.padding-w20h4
+    .span4
+      .thumbnail.padding-w20h4.margin-wh20.item
         h4= link_to photo.title, photo_path(photo)
-        = image_tag photo.decorate.image_url(:thumb), class: 'height-200'
+        p= image_tag photo.decorate.image_url(:thumb)
         p
           - photo.tags.each do |tag|
-            span.label= "#{tag.name} "
+            = link_to content_tag(:span, tag.name, :class => 'label'), photos_path(tag: tag.id)
             '
         h5= photo.content
         h6
