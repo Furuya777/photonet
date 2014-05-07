@@ -9,9 +9,9 @@
 .row
   - @photos.each do |photo|
     .span4
-      .thumbnail.padding-w20h4.margin-wh20.item
+      .box_line.padding-w20h4.margin-wh20.item
         h4= link_to photo.title, photo_path(photo)
-        p= image_tag photo.decorate.image_url(:thumb)
+        p.align-center= link_to image_tag(photo.decorate.image_url(:thumb)), photo.decorate.image_url(:show), :class => 'image-popup-vertical-fit'
         p
           - photo.tags.each do |tag|
             = link_to content_tag(:span, tag.name, :class => 'label'), photos_path(tag: tag.id)
