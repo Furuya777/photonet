@@ -13,8 +13,6 @@ html lang="ja"
     = stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application"
 
-
-
   body
     .navbar.navbar-fluid-top
       .navbar-inner
@@ -36,3 +34,7 @@ html lang="ja"
 
       footer
         p &copy; Company 2014
+
+javascript:
+  $(".item").matchHeight();
+  $(".item").matchHeight._update()
