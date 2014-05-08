@@ -1,4 +1,5 @@
 Photonet::Application.routes.draw do
+  devise_for :admins
   resources :tags
 
   root "static_pages#home"
