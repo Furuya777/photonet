@@ -1,7 +1,7 @@
 h2 更新
 
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render 'shared/error_messages', model: resource
+  = render 'admin/shared/error_messages', model: resource
 
   = f.input :email, required: true, autofocus: true
 

@@ -20,10 +20,13 @@ html lang="ja"
           a.brand href="/"Photonet
           .container-fluid.nav-collapse
             ul.nav
-              li= link_to "photo", photos_path
-              li= link_to "tag", tags_path
-              li= link_to "about", static_pages_about_path
-              li= link_to "help", static_pages_help_path
+              - if admin_signed_in?
+                li= link_to "photo", admin_photos_path
+                li= link_to "tag", admin_tags_path
+              - else
+                li= link_to "photo", photos_path
+                li= link_to "about", static_pages_about_path
+                li= link_to "help", static_pages_help_path
           .navbar-text.pull-right
           - if admin_signed_in?
             | Logged in as :
