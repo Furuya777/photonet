@@ -11,7 +11,7 @@ table class="table table-striped"
   tbody
     - @tags.each do |tag|
       tr
-        td= link_to tag.id, photo_path(tag)
+        td= link_to tag.id, tag_path(tag)
         td= tag.name
         td=l tag.created_at
         td

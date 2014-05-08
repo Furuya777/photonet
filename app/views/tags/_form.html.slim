@@ -1,9 +1,7 @@
-= form_for @tag, :html => { :class => "form-horizontal" } do |f|
-  .control-group
-    = f.label :name, :class => 'control-label'
-    .controls
-      = f.text_field :name, :class => 'text_field'
+= simple_form_for @tag, :html => { :class => "form-horizontal" } do |f|
+  = render 'shared/error_messages', model: @tag
+  = f.input :name, hint: "※10文字以内"
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
+    = f.button :submit, :class => 'btn-primary'
     '
     = link_to t('.cancel', :default => t("helpers.links.cancel")), tags_path, :class => 'btn'

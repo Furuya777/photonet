@@ -10,4 +10,8 @@ class Photo < ActiveRecord::Base
     includes(:photos_tags)
       .where("photos_tags.tag_id = ?", tag_id)
   end
+
+  validates :title,     presence: true, length: { maximum: 20 }
+  validates :image,     presence: true
+  validates :content,                   length: { maximum: 200 }
 end

@@ -1,20 +1,13 @@
-= form_for @photo, :html => { :class => "form-horizontal" } do |f|
-  .control-group
-    = f.label :content, :class => 'control-label'
-    .controls
-      - if f.object.image?
-        = image_tag f.object.image.thumb.url
-        br
-      = f.file_field :image, :class => 'file_field'
-      = f.hidden_field :image_cache
-  .control-group
-    = f.label :title, :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
-    = f.label :content, :class => 'control-label'
-    .controls
-      = f.text_field :content, :class => 'text_field'
+= simple_form_for @photo, :html => { :class => "form-horizontal" } do |f|
+  = render 'shared/error_messages', model: @photo
+  = f.input :title, hint: "※20文字以内"
+  = f.input :content, hint: "※200文字以内"
+  = f.input :image
+  .controls
+    - if f.object.image?
+      = image_tag f.object.image.thumb.url
+      br
+    = f.hidden_field :image_cache
   .control-group
     = f.label :tag, :class => 'control-label'
     .controls
@@ -22,8 +15,7 @@
         = tag.label do
           = tag.check_box
           = tag.text
-
   .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
+    = f.button :submit, :class => 'btn-primary'
     '
     = link_to t('.cancel', :default => t("helpers.links.cancel")), photos_path, :class => 'btn'
