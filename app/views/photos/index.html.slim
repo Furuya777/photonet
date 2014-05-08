@@ -16,7 +16,7 @@
           - photo.tags.each do |tag|
             = link_to content_tag(:span, tag.name, :class => 'label'), photos_path(tag: tag.id)
             '
-        h5= photo.content
+        h5= simple_format(photo.content)
         h6
           = "#{model_class.human_attribute_name(:updated_at)}:#{l photo.updated_at}"
           br
