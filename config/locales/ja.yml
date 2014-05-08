@@ -138,6 +138,7 @@ ja:
       new: 新規作成
       edit: 更 新
       destroy: 削 除
+      back: 戻 る
     actions: ""
   number:
     currency:

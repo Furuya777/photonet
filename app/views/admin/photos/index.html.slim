@@ -1,0 +1,27 @@
+- model_class = Photo
+.page-header
+  .row
+    .span10
+      h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+    .span2
+      .new-link
+        = link_to t('.new', :default => t("helpers.links.new")), new_admin_photo_path, :class => 'btn btn-primary'
+.row
+  - @photos.each do |photo|
+    .span4
+      .box_line.padding-w20h4.margin-wh20.item
+        h4= link_to photo.title, admin_photo_path(photo)
+        p.align-center= link_to image_tag(photo.decorate.image_url(:thumb)), photo.decorate.image_url(:show), :title => photo.title, :class => 'image-popup-vertical-fit'
+        p
+          - photo.tags.each do |tag|
+            = link_to content_tag(:span, tag.name, :class => 'label'), admin_photos_path(tag: tag.id)
+            '
+        h5= simple_format(photo.content)
+        h6
+          = "#{model_class.human_attribute_name(:updated_at)}:#{l photo.updated_at}"
+          br
+          = "#{model_class.human_attribute_name(:created_at)}:#{l photo.created_at}"
+        h6
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_photo_path(photo), :class => 'btn btn-mini'
+          '
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_photo_path(photo), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

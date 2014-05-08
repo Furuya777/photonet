@@ -1,5 +1,5 @@
-= simple_form_for @photo, :html => { :class => "form-horizontal" } do |f|
-  = render 'shared/error_messages', model: @photo
+= simple_form_for [:admin, @photo], :html => { :class => "form-horizontal" } do |f|
+  = render 'admin/shared/error_messages', model: @photo
   = f.input :title, hint: "※20文字以内"
   = f.input :content, hint: "※200文字以内"
   = f.input :image
@@ -18,4 +18,4 @@
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), photos_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_photos_path, :class => 'btn'
