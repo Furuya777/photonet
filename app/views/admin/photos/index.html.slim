@@ -31,5 +31,5 @@ table.table.table-striped
       td= l photo.created_at
       td
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_photo_path(photo), :class => 'btn btn-mini'
-= paginate(@photos)
+= paginate(@photos, :theme => 'admin')
 .clearfix
