@@ -6,27 +6,30 @@
     .span2
       .new-link
         = link_to t('.new', :default => t("helpers.links.new")), new_admin_photo_path, :class => 'btn btn-primary'
-  table.table.table-striped
+.align-center= page_entries_info(@photos)
+table.table.table-striped
+  tr
+    th.align-center= model_class.human_attribute_name(:id)
+    th.align-center= model_class.human_attribute_name(:title)
+    th.align-center= model_class.human_attribute_name(:image)
+    th.align-center= model_class.human_attribute_name(:tag)
+    th.align-center= model_class.human_attribute_name(:content)
+    th.align-center= model_class.human_attribute_name(:updated_at)
+    th.align-center= model_class.human_attribute_name(:created_at)
+    th.align-center= " "
+  - @photos.each do |photo|
     tr
-      th.align-center= model_class.human_attribute_name(:id)
-      th.align-center= model_class.human_attribute_name(:title)
-      th.align-center= model_class.human_attribute_name(:image)
-      th.align-center= model_class.human_attribute_name(:tag)
-      th.align-center= model_class.human_attribute_name(:content)
-      th.align-center= model_class.human_attribute_name(:updated_at)
-      th.align-center= model_class.human_attribute_name(:created_at)
-      th.align-center= " "
-    - @photos.each do |photo|
-      tr
-        td= photo.id
-        td= link_to photo.title, admin_photo_path(photo)
-        td.align-center= link_to image_tag(photo.decorate.image_url(:thumb), :class => 'height-150'), admin_photo_path(photo)
-        td
-          - photo.tags.each do |tag|
-            = link_to content_tag(:span, tag.name, :class => 'label'), admin_photos_path(tag: tag.id)
-            '
-        td= simple_format(photo.content)
-        td= l photo.updated_at
-        td= l photo.created_at
-        td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_photo_path(photo), :class => 'btn btn-mini'
+      td= photo.id
+      td= link_to photo.title, admin_photo_path(photo)
+      td.align-center= link_to image_tag(photo.decorate.image_url(:thumb), :class => 'height-150'), admin_photo_path(photo)
+      td
+        - photo.tags.each do |tag|
+          = link_to content_tag(:span, tag.name, :class => 'label'), admin_photos_path(tag: tag.id)
+          '
+      td= simple_format(photo.content)
+      td= l photo.updated_at
+      td= l photo.created_at
+      td
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_photo_path(photo), :class => 'btn btn-mini'
+= paginate(@photos)
+.clearfix

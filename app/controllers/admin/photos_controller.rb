@@ -2,12 +2,15 @@ class Admin::PhotosController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
+  RESULT_PER_PAGE = 5
+
   def index
     if params[:tag].present?
-      @photos = Photo.tag(params[:tag]).order_created_at
+      photos = Photo.tag(params[:tag]).order_created_at
     else
-      @photos = Photo.all.order_created_at
+      photos = Photo.all.order_created_at
     end
+    @photos = photos.page(params[:page]).per(RESULT_PER_PAGE)
   end
 
   def show
