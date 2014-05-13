@@ -1,0 +1,3 @@
+class FrontyardController < ApplicationController
+
+end

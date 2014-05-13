@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < FrontyardController
   before_action :set_photo, only: [:show]
 
   RESULT_PER_PAGE = 6
