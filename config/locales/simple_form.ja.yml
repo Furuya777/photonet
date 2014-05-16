@@ -15,7 +15,7 @@ ja:
       defaults:
         password: 'パスワード'
         email: 'メールアドレス'
-        password_confirmation: 'メールアドレス(再入力)'
+        password_confirmation: 'パスワード(再入力)'
         current_password: '元のパスワード'
     # hints:
     #   defaults:

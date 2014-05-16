@@ -3,18 +3,55 @@ ja:
     models:
       photo: photo
       tag: tag
+      event: event
+      group: group
+      performer: performer
     attributes:
       photo:
         id: ID
         image: 写真
         title: タイトル
         tag: タグ
+        event_id: 関連イベント
+        group: 関連グループ
+        performer: 関連役者
         content: 説明
         updated_at: 更新日時
         created_at: 作成日時
       tag:
         id: ID
-        name: 名前
+        name: 名称
+        updated_at: 更新日時
+        created_at: 作成日時
+      event:
+        id: ID
+        name: イベント名
+        opened_at: 掲載開始日時
+        closed_at: 掲載終了日時
+        updated_at: 更新日時
+        created_at: 作成日時
+      group:
+        id: ID
+        name: グループ名
+        organized_on: 結成年月日
+        performer: 所属役者
+        updated_at: 更新日時
+        created_at: 作成日時
+      performer:
+        id: ID
+        last_name: 氏
+        first_name: 名
+        last_name_kana: 氏(かな)
+        first_name_kana: 名(かな)
+        full_name: 氏名
+        birth: 生年月日
+        gender: 性別
+        height: 身長(cm)
+        weight: 体重(kg)
+        profile: プロフィール
+        profile_image: プロフィール写真
+        leaved_on: 脱退年月日
+        graduated_on: 卒業年月日
         updated_at: 更新日時
         created_at: 作成日時
 

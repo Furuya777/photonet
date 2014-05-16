@@ -13,8 +13,10 @@ table.table.table-striped
     th.align-center= model_class.human_attribute_name(:title)
     th.align-center= model_class.human_attribute_name(:image)
     th.align-center= model_class.human_attribute_name(:tag)
+    th.align-center= model_class.human_attribute_name(:event_id)
+    th.align-center= model_class.human_attribute_name(:group)
+    th.align-center= model_class.human_attribute_name(:performer)
     th.align-center= model_class.human_attribute_name(:content)
-    th.align-center= model_class.human_attribute_name(:updated_at)
     th.align-center= model_class.human_attribute_name(:created_at)
     th.align-center= " "
   - @photos.each do |photo|
@@ -26,8 +28,18 @@ table.table.table-striped
         - photo.tags.each do |tag|
           = link_to content_tag(:span, tag.name, :class => 'label'), admin_photos_path(tag: tag.id)
           '
+      td
+        - if photo.event_id.present?
+          = photo.event.name
+      td
+        - photo.groups.each do |group|
+          = link_to content_tag(:span, group.name, :class => 'label'), admin_groups_path(group: group.id)
+          '
+      td
+        - photo.performers.each do |performer|
+          = link_to content_tag(:span, performer.full_name, :class => 'label'), admin_performers_path(performer: performer.id)
+          '
       td= simple_format(photo.content)
-      td= l photo.updated_at
       td= l photo.created_at
       td
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_photo_path(photo), :class => 'btn btn-mini'

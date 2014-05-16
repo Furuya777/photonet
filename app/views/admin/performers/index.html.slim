@@ -1,0 +1,37 @@
+- model_class = Performer
+.page-header
+  .row
+    .span10
+      h1= t '.title', :default => model_class.model_name.human.pluralize.titleize
+    .span2
+      .new-link
+        = link_to t('.new', :default => t("helpers.links.new")), new_admin_performer_path, :class => 'btn btn-primary'
+.align-center= page_entries_info(@performers)
+table.table.table-striped
+  tr
+    th.align-center= model_class.human_attribute_name(:id)
+    th.align-center= model_class.human_attribute_name(:full_name)
+    th.align-center= model_class.human_attribute_name(:birth)
+    th.align-center= model_class.human_attribute_name(:gender)
+    th.align-center= model_class.human_attribute_name(:leaved_on)
+    th.align-center= model_class.human_attribute_name(:graduated_on)
+    th.align-center= model_class.human_attribute_name(:created_at)
+    th.align-center=t '.actions', :default => t("helpers.actions")
+
+  - @performers.each do |performer|
+    tr
+      td= link_to performer.id, admin_performer_path(performer)
+      td= performer.full_name
+      td= l performer.birth
+      td= performer.gender
+      td= l performer.leaved_on
+      td= l performer.graduated_on
+      td= l performer.created_at
+      td
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_performer_path(performer), :class => 'btn btn-mini'
+        '
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_performer_path(performer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= paginate(@performers, :theme => 'admin')
+.clearfix
+

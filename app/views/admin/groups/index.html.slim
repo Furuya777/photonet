@@ -1,0 +1,37 @@
+- model_class = Group
+.page-header
+  .row
+    .span10
+      h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+    .span2
+      .new-link
+        = link_to t('.new', :default => t("helpers.links.new")), new_admin_group_path, :class => 'btn btn-primary'
+.align-center= page_entries_info(@groups)
+table.table.table-striped
+  tr
+    th.align-center= model_class.human_attribute_name(:id)
+    th.align-center= model_class.human_attribute_name(:name)
+    th.align-center= model_class.human_attribute_name(:organized_on)
+    th.align-center= model_class.human_attribute_name(:performer)
+    th.align-center= model_class.human_attribute_name(:created_at)
+    th.align-center=t '.actions', :default => t("helpers.actions")
+
+  - @groups.each do |group|
+    tr
+      td= link_to group.id, admin_group_path(group)
+      td= group.name
+      td=l group.organized_on
+      td
+        - group.performers.each_with_index do |performer, i|
+          = link_to content_tag(:span, performer.full_name, :class => 'label'), admin_performers_path(performer: performer.id)
+          '
+          - if (i+1)%7 == 0
+            br
+      td=l group.created_at
+      td
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_group_path(group), :class => 'btn btn-mini'
+        '
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_group_path(group), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= paginate(@groups, :theme => 'admin')
+.clearfix

@@ -15,6 +15,24 @@
         = tag.label do
           = tag.check_box
           = tag.text
+  .control-group
+    = f.label :group, :class => 'control-label'
+    .controls
+      = f.collection_check_boxes :group_ids, Group.all, :id, :name do |group|
+        = group.label do
+          = group.check_box
+          = group.text
+  .control-group
+    = f.label :performer, :class => 'control-label'
+    .controls
+      = f.collection_check_boxes :performer_ids, Performer.all, :id, :full_name do |performer|
+        = performer.label do
+          = performer.check_box
+          = performer.text
+
+  = f.input :event_id, collection: Event.all
+
+
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '

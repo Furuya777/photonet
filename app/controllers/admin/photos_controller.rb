@@ -2,7 +2,7 @@ class Admin::PhotosController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  RESULT_PER_PAGE = 5
+  RESULT_PER_PAGE = 25
 
   def index
     if params[:tag].present?
@@ -26,6 +26,8 @@ class Admin::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.tag_ids = params[:photo][:tag_ids]
+    @photo.group_ids = params[:photo][:group_ids]
+    @photo.performer_ids = params[:photo][:performer_ids]
 
     respond_to do |format|
       if @photo.save
@@ -42,6 +44,8 @@ class Admin::PhotosController < ApplicationController
   def update
     @photo.attributes = photo_params
     @photo.tag_ids = params[:photo][:tag_ids]
+    @photo.group_ids = params[:photo][:group_ids]
+    @photo.performer_ids = params[:photo][:performer_ids]
 
     respond_to do |format|
       if @photo.save
@@ -71,7 +75,7 @@ class Admin::PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:title, :content, :image, :image_cache)
+      params.require(:photo).permit(:title, :content, :image, :image_cache, :event_id)
     end
 
     def copy_images

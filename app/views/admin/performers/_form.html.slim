@@ -1,0 +1,22 @@
+= simple_form_for [:admin, @performer], :html => { :class => "form-horizontal" } do |f|
+  = render 'admin/shared/error_messages', model: @performer
+  table
+    tr
+      td
+        = f.input :last_name, hint: "※30文字以内"
+      td
+        = f.input :first_name, hint: "※30文字以内"
+    tr
+      td
+        = f.input :last_name_kana, hint: "※30文字以内"
+      td
+        = f.input :first_name_kana, hint: "※30文字以内"
+  = f.input :birth
+  = f.input :gender, :collection => {男性:1, 女性:2} 
+  = f.input :profile, hint: "※30文字以内"
+  = f.input :leaved_on
+  = f.input :graduated_on
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    '
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_performers_path, :class => 'btn'

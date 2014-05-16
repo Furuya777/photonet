@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @group], :html => { :class => "form-horizontal" } do |f|
+  = render 'admin/shared/error_messages', model: @group
+  = f.input :name, hint: "※30文字以内"
+  = f.input :organized_on, hint: "※30文字以内"
+  .control-group
+    = f.label :performer, :class => 'control-label'
+    .controls
+      = f.collection_check_boxes :performer_ids, Performer.all, :id, :full_name do |performer|
+        = performer.label do
+          = performer.check_box
+          = performer.text
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    '
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_groups_path, :class => 'btn'
