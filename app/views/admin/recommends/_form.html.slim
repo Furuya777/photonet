@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @recommend], :html => { :class => "form-horizontal" } do |f|
+  = render 'admin/shared/error_messages', model: @recommend
+  = f.input :name, hint: "※30文字以内"
+  = f.input :opened_at, hint: "※30文字以内"
+  = f.input :closed_at, hint: "※30文字以内"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    '
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_recommends_path, :class => 'btn'
