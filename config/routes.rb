@@ -2,7 +2,7 @@ Photonet::Application.routes.draw do
 
 
   devise_for :admins
-  root "static_pages#home"
+  root "homes#index"
   get "static_pages/help"
   get "static_pages/about"
 
