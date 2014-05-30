@@ -54,7 +54,7 @@ html lang="ja"
       = yield
 
       footer
-        p &copy; Company 2014
+        p = Settings.copy_right.html_safe
 
 javascript:
   $(".item").matchHeight();

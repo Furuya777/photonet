@@ -2,6 +2,8 @@ defaults: &defaults
   validation:
     invalid_character_mask: 〓
 
+  prompt: "選択してください"
+
   admin:
     title:
       index:
@@ -32,7 +34,6 @@ defaults: &defaults
         group: "グループ編集"
         performer: "所属役者編集"
         recommend: "オススメ編集"
-
     display_number_per_page:
       photo: 5
       tag: 5
@@ -41,7 +42,41 @@ defaults: &defaults
       performer: 25
       recommend: 5
 
-  prompt: "選択してください"
+  application:
+    title:
+      index:
+        photo: "写真一覧"
+        event: "イベント一覧"
+        group: "グループ一覧"
+        performer: "所属役者一覧"
+        recommend: "オススメ一覧"
+      show:
+        photo: "写真詳細"
+        event: "イベント詳細"
+        group: "グループ詳細"
+        performer: "所属役者詳細"
+        recommend: "オススメ詳細"
+    feature_phone:
+      display_number_per_page:
+        photo: 5
+        event: 10
+        group: 10
+        performer: 25
+        recommend: 5
+    smart_phone:
+      display_number_per_page:
+        photo: 5
+        event: 10
+        group: 10
+        performer: 25
+        recommend: 5
+    broser:
+      display_number_per_page:
+        photo: 5
+        event: 10
+        group: 10
+        performer: 25
+        recommend: 5
 
   gender:
     male:
@@ -50,6 +85,10 @@ defaults: &defaults
     female:
       id: 2
       name: "女性"
+
+  watermark_string: "Sample"
+
+  copy_right: "&copy; RGENE-inc 2014"
 
 development:
   <<: *defaults
