@@ -9,5 +9,8 @@ class PerformerDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
+  def gender_string
+    Settings.gender.male.name if object.gender == Settings.gender.male.id
+    Settings.gender.female.name if object.gender == Settings.gender.female.id
+  end
 end

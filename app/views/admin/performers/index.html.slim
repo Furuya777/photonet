@@ -23,7 +23,7 @@ table.table.table-striped
       td= link_to performer.id, admin_performer_path(performer)
       td= performer.full_name
       td= l performer.birth if performer.birth.present?
-      td= performer.gender
+      td= performer.decorate.gender_string
       td= l performer.leaved_on if performer.leaved_on.present?
       td= l performer.graduated_on if performer.graduated_on.present?
       td= l performer.created_at

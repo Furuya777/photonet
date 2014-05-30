@@ -1,0 +1,19 @@
+defaults: &defaults
+  validation:
+    invalid_character_mask: 〓
+  gender:
+    male:
+      id: 1
+      name: "男性"
+    female:
+      id: 2
+      name: "女性"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
