@@ -32,7 +32,7 @@ defaults: &defaults
         group: "グループ編集"
         performer: "所属役者編集"
         recommend: "オススメ編集"
-        
+
     display_number_per_page:
       photo: 5
       tag: 5
