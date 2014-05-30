@@ -2,10 +2,8 @@ class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  RESULT_PER_PAGE = 25
-
   def index
-    @groups = Group.all.page(params[:page]).per(RESULT_PER_PAGE)
+    @groups = Group.all.page(params[:page]).per(Settings.admin_display_page_number.group_per_page)
   end
 
   def show

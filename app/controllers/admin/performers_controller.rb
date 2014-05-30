@@ -2,10 +2,8 @@ class Admin::PerformersController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_performer, only: [:show, :edit, :update, :destroy]
 
-  RESULT_PER_PAGE = 25
-
   def index
-    @performers = Performer.all.page(params[:page]).per(RESULT_PER_PAGE)
+    @performers = Performer.all.page(params[:page]).per(Settings.admin_display_page_number.performer_per_page)
   end
 
   def show
