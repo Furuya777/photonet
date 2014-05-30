@@ -1,13 +1,47 @@
 defaults: &defaults
   validation:
     invalid_character_mask: 〓
-  admin_display_page_number:
-    photo_per_page: 5
-    tag_per_page: 5
-    event_per_page: 10
-    group_per_page: 10
-    performer_per_page: 25
-    recommend_per_page: 5
+
+  admin:
+    title:
+      index:
+        photo: "写真一覧"
+        tag: "タグ一覧"
+        event: "イベント一覧"
+        group: "グループ一覧"
+        performer: "所属役者一覧"
+        recommend: "オススメ一覧"
+      show:
+        photo: "写真登録内容表示"
+        tag: "タグ登録内容表示"
+        event: "イベント登録内容表示"
+        group: "グループ登録内容表示"
+        performer: "所属役者登録内容表示"
+        recommend: "オススメ登録内容表示"
+      new:
+        photo: "写真新規登録"
+        tag: "タグ新規登録"
+        event: "イベント新規登録"
+        group: "グループ新規登録"
+        performer: "所属役者新規登録"
+        recommend: "オススメ新規登録"
+      edit:
+        photo: "写真編集"
+        tag: "タグ編集"
+        event: "イベント編集"
+        group: "グループ編集"
+        performer: "所属役者編集"
+        recommend: "オススメ編集"
+        
+    display_number_per_page:
+      photo: 5
+      tag: 5
+      event: 10
+      group: 10
+      performer: 25
+      recommend: 5
+
+  prompt: "選択してください"
 
   gender:
     male:

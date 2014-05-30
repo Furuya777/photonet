@@ -3,7 +3,7 @@ class Admin::PerformersController < ApplicationController
   before_action :set_performer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @performers = Performer.all.page(params[:page]).per(Settings.admin_display_page_number.performer_per_page)
+    @performers = Performer.all.page(params[:page]).per(Settings.admin.display_number_per_page.performer)
   end
 
   def show

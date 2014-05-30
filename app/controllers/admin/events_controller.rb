@@ -3,7 +3,7 @@ class Admin::EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all.page(params[:page]).per(Settings.admin_display_page_number.event_per_page)
+    @events = Event.all.page(params[:page]).per(Settings.admin.display_number_per_page.event)
   end
 
   def show

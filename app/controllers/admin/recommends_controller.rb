@@ -3,7 +3,7 @@ class Admin::RecommendsController < ApplicationController
   before_action :set_recommend, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recommends = Recommend.all.page(params[:page]).per(Settings.admin_display_page_number.recommend_per_page)
+    @recommends = Recommend.all.page(params[:page]).per(Settings.admin.display_number_per_page.recommend)
   end
 
   def show

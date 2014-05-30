@@ -3,7 +3,7 @@ class Admin::GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all.page(params[:page]).per(Settings.admin_display_page_number.group_per_page)
+    @groups = Group.all.page(params[:page]).per(Settings.admin.display_number_per_page.group)
   end
 
   def show

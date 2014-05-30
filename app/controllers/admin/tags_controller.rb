@@ -3,7 +3,7 @@ class Admin::TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tags = Tag.all.page(params[:page]).per(Settings.admin_display_page_number.tag_per_page)
+    @tags = Tag.all.page(params[:page]).per(Settings.admin.display_number_per_page.tag)
   end
 
   def show

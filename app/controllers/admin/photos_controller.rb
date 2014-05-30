@@ -8,7 +8,7 @@ class Admin::PhotosController < ApplicationController
     else
       photos = Photo.all.order_created_at
     end
-    @photos = photos.page(params[:page]).per(Settings.admin_display_page_number.photo_per_page)
+    @photos = photos.page(params[:page]).per(Settings.admin.display_number_per_page.photo)
   end
 
   def show

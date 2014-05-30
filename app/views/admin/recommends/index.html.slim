@@ -2,7 +2,7 @@
 .page-header
   .row
     .span10
-      h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+      h1=t '.title', :default => Settings.admin.title.index.recommend
     .span2
       .new-link
         = link_to t('.new', :default => t("helpers.links.new")), new_admin_recommend_path, :class => 'btn btn-primary'
