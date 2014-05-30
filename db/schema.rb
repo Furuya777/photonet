@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519074112) do
+ActiveRecord::Schema.define(version: 20140530065634) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20140519074112) do
   create_table "groups_photos", force: true do |t|
     t.integer  "group_id"
     t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "information_contents", force: true do |t|
+    t.string   "information_area",                    null: false
+    t.text     "content",          limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -112,5 +119,13 @@ ActiveRecord::Schema.define(version: 20140519074112) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "cookie_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["cookie_code"], name: "index_users_on_cookie_code", unique: true
 
 end

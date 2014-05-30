@@ -13,13 +13,15 @@ defaults: &defaults
         group: "グループ一覧"
         performer: "所属役者一覧"
         recommend: "オススメ一覧"
+        information_content: "トップページ表示一覧"
       show:
-        photo: "写真登録内容表示"
-        tag: "タグ登録内容表示"
-        event: "イベント登録内容表示"
-        group: "グループ登録内容表示"
-        performer: "所属役者登録内容表示"
-        recommend: "オススメ登録内容表示"
+        photo: "写真詳細"
+        tag: "タグ詳細"
+        event: "イベント詳細"
+        group: "グループ詳細"
+        performer: "所属役者詳細"
+        recommend: "オススメ詳細"
+        information_content: "トップページ表示詳細"
       new:
         photo: "写真新規登録"
         tag: "タグ新規登録"
@@ -27,6 +29,7 @@ defaults: &defaults
         group: "グループ新規登録"
         performer: "所属役者新規登録"
         recommend: "オススメ新規登録"
+        information_content: "トップページ表示新規登録"
       edit:
         photo: "写真編集"
         tag: "タグ編集"
@@ -34,6 +37,7 @@ defaults: &defaults
         group: "グループ編集"
         performer: "所属役者編集"
         recommend: "オススメ編集"
+        information_content: "トップページ表示編集"
     display_number_per_page:
       photo: 5
       tag: 5
@@ -41,6 +45,7 @@ defaults: &defaults
       group: 10
       performer: 25
       recommend: 5
+      information_content: 3
 
   application:
     title:
@@ -63,6 +68,7 @@ defaults: &defaults
         group: 10
         performer: 25
         recommend: 5
+        information_content: 3
     smart_phone:
       display_number_per_page:
         photo: 5
@@ -70,6 +76,7 @@ defaults: &defaults
         group: 10
         performer: 25
         recommend: 5
+        information_content: 3
     broser:
       display_number_per_page:
         photo: 5
@@ -77,6 +84,18 @@ defaults: &defaults
         group: 10
         performer: 25
         recommend: 5
+        information_content: 3
+
+  information_content:
+    upper:
+      area: "U"
+      name: "上部"
+    middle:
+      area: "M"
+      name: "中央"
+    lower:
+      area: "L"
+      name: "下部"
 
   gender:
     male:

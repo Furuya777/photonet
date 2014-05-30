@@ -1,0 +1,4 @@
+- model_class = InformationContent
+div class="page-header"
+  h1=t '.title', :default => [:'helpers.titles.edit', Settings.admin.title.edit.information_content], :model => model_class.model_name.human.titleize
+= render :partial => "form"

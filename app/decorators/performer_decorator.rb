@@ -10,7 +10,11 @@ class PerformerDecorator < Draper::Decorator
   #     end
   #   end
   def gender_string
-    Settings.gender.male.name if object.gender == Settings.gender.male.id
-    Settings.gender.female.name if object.gender == Settings.gender.female.id
+    case object.gender
+    when Settings.gender.male.id
+      Settings.gender.male.name
+    when Settings.gender.female.id
+      Settings.gender.female.name
+    end
   end
 end

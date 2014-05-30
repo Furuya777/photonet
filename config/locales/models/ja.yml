@@ -55,3 +55,9 @@ ja:
         updated_at: 更新日時
         created_at: 作成日時
 
+      information_content:
+        id: ID
+        information_area: 表示場所
+        content: 表示内容
+        updated_at: 更新日時
+        created_at: 作成日時

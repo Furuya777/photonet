@@ -1,6 +1,5 @@
 Photonet::Application.routes.draw do
 
-
   devise_for :admins
   root "homes#index"
   get "static_pages/help"
@@ -13,6 +12,7 @@ Photonet::Application.routes.draw do
     resources :groups
     resources :events
     resources :recommends
+    resources :information_contents
   end
 
   resources :photos, only: [:index, :show]
