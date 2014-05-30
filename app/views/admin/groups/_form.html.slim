@@ -1,7 +1,7 @@
 = simple_form_for [:admin, @group], :html => { :class => "form-horizontal" } do |f|
   = render 'admin/shared/error_messages', model: @group
   = f.input :name, hint: "※30文字以内"
-  = f.input :organized_on, hint: "※30文字以内"
+  = f.input :organized_on, include_blank: true
   .control-group
     = f.label :performer, :class => 'control-label'
     .controls

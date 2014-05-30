@@ -20,7 +20,7 @@ table.table.table-striped
     tr
       td= link_to group.id, admin_group_path(group)
       td= group.name
-      td=l group.organized_on
+      td=l group.organized_on if group.organized_on.present?
       td
         - group.performers.each_with_index do |performer, i|
           = link_to content_tag(:span, performer.full_name, :class => 'label'), admin_performers_path(performer: performer.id)

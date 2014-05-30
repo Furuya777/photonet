@@ -20,8 +20,8 @@ table.table.table-striped
     tr
       td= link_to event.id, admin_event_path(event)
       td= event.name
-      td= l event.opened_at
-      td= l event.closed_at
+      td= l event.opened_at if event.opened_at.present?
+      td= l event.closed_at if event.closed_at.present?
       td= l event.created_at
       td
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_event_path(event), :class => 'btn btn-mini'

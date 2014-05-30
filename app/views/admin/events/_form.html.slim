@@ -1,8 +1,8 @@
 = simple_form_for [:admin, @event], :html => { :class => "form-horizontal" } do |f|
   = render 'admin/shared/error_messages', model: @event
   = f.input :name, hint: "※30文字以内"
-  = f.input :opened_at, hint: "※30文字以内"
-  = f.input :closed_at, hint: "※30文字以内"
+  = f.input :opened_at, include_blank: true
+  = f.input :closed_at, include_blank: true
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '

@@ -22,10 +22,10 @@ table.table.table-striped
     tr
       td= link_to performer.id, admin_performer_path(performer)
       td= performer.full_name
-      td= l performer.birth
+      td= l performer.birth if performer.birth.present?
       td= performer.gender
-      td= l performer.leaved_on
-      td= l performer.graduated_on
+      td= l performer.leaved_on if performer.leaved_on.present?
+      td= l performer.graduated_on if performer.graduated_on.present?
       td= l performer.created_at
       td
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_performer_path(performer), :class => 'btn btn-mini'
