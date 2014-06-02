@@ -11,7 +11,7 @@
         p.align-center= link_to image_tag(photo.decorate.image_url(:thumb)), photo.decorate.image_url(:show), :title => photo.title, :class => 'image-popup-vertical-fit'
         p
           - photo.tags.each do |tag|
-            = link_to content_tag(:span, tag.name, :class => 'label'), admin_photos_path(tag: tag.id)
+            = link_to content_tag(:span, tag.name, :class => 'label'), photos_path(tag: tag.id)
             '
         h5= simple_format(photo.content)
         h6

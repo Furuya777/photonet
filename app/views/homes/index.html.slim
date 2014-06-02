@@ -1,6 +1,26 @@
 .page-header
   h1 TOP
 .clearfix
+.page-header
+  h1=t '.title', :default => Settings.application.title.index.recommend
+.row
+  - @recommends.each do |recommend|
+    - if recommend.photo_id.present?
+      .span4
+        .box_line.padding-w20h4.margin-wh20.item
+          h4= link_to recommend.photo.title, photo_path(recommend.photo)
+          p.align-center= link_to image_tag(recommend.photo.decorate.image_url(:thumb)), recommend.photo.decorate.image_url(:show), :title => recommend.photo.title, :class => 'image-popup-vertical-fit'
+          p
+            - recommend.photo.tags.each do |tag|
+              = link_to content_tag(:span, tag.name, :class => 'label'), photos_path(tag: tag.id)
+              '
+          h5= simple_format(recommend.photo.content)
+          h6
+            = "#{Photo.human_attribute_name(:updated_at)}:#{l recommend.photo.updated_at}"
+            br
+            = "#{Photo.human_attribute_name(:created_at)}:#{l recommend.photo.created_at}"
+.page-header
+  h1=t '.title', :default => Settings.application.title.index.photo
 .row
   - @photos.each do |photo|
     .span4
