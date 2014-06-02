@@ -11,11 +11,11 @@
         = f.input :last_name_kana, hint: "※30文字以内"
       td
         = f.input :first_name_kana, hint: "※30文字以内"
-  = f.input :birth, include_blank: true
-  = f.input :gender, :collection => {Settings.gender.male.name => Settings.gender.male.id, Settings.gender.female.name => Settings.gender.female.id}, :prompt => Settings.prompt
-  = f.input :profile, hint: "※30文字以内"
-  = f.input :leaved_on, include_blank: true
-  = f.input :graduated_on, include_blank: true
+  = f.input :birth, include_blank: true, :input_html => {:class => "input-small"}
+  = f.input :gender, :collection => {Settings.gender.male.name => Settings.gender.male.id, Settings.gender.female.name => Settings.gender.female.id}, :prompt => Settings.prompt, :input_html => {:class => "input-small"}
+  = f.input :profile, hint: "※30文字以内", :input_html => {:class => "input-xxlarge"}
+  = f.input :leaved_on, include_blank: true, :input_html => {:class => "input-small"}
+  = f.input :graduated_on, include_blank: true, :input_html => {:class => "input-small"}
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '
