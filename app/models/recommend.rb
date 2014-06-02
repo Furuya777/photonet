@@ -7,6 +7,6 @@ class Recommend < ActiveRecord::Base
   private
 
   def valid_photo_id
-    errors.add(:photo_id, :invalid) if Photo.where(id: self.photo_id).blank?
+    errors.add(:photo_id, :invalid) if Photo.where(id: self.photo_id).none?
   end
 end
