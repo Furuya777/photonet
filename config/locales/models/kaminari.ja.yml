@@ -11,6 +11,6 @@ ja:
       one_page:
         zero: "<b>該当データがありません。</b>"
         one: "<b>1件中 1-1 件を表示</b>"
-        display_entries: '%1-%{count}件を表示中 / 合計%{count}件'
+        display_entries: '1-%{count}件を表示中 / 合計%{count}件'
       more_pages:
         display_entries: '%{first}-%{last}件を表示中 / 合計%{total}件'

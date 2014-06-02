@@ -1,39 +1,30 @@
 class Admin::RecommendsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_recommend, only: [:show, :edit, :update, :destroy]
 
   def index
     @recommends = Recommend.all.page(params[:page]).per(Settings.admin.display_number_per_page.recommend)
   end
 
-  def show
-  end
-
-  def new
-    @recommend = Recommend.new
-  end
-
   def edit
-  end
-
-  def create
-    @recommend = Recommend.new(recommend_params)
-
-    respond_to do |format|
-      if @recommend.save
-        format.html { redirect_to @recommend, notice: 'Recommend was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @recommend }
+    @recommend = Recommend.new
+    if params[:confirmation].present?
+      @recommend.assign_attributes(recommend_params)
+      if @recommend.valid?
+        render :edit_confirmation
       else
-        format.html { render action: 'new' }
-        format.json { render json: @recommend.errors, status: :unprocessable_entity }
+        render :edit
       end
+    else
+      @recommend = Recommend.find(params[:id])
+      render :edit
     end
   end
 
   def update
+    @recommend = Recommend.find(params[:id])
     respond_to do |format|
       if @recommend.update(recommend_params)
-        format.html { redirect_to @recommend, notice: 'Recommend was successfully updated.' }
+        format.html { redirect_to admin_recommends_path, notice: 'Recommend was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -42,22 +33,10 @@ class Admin::RecommendsController < ApplicationController
     end
   end
 
-  def destroy
-    @recommend.destroy
-    respond_to do |format|
-      format.html { redirect_to recommends_url }
-      format.json { head :no_content }
-    end
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recommend
-      @recommend = Recommend.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recommend_params
-      params[:recommend]
+      params.require(:recommend).permit(:photo_id)
     end
 end

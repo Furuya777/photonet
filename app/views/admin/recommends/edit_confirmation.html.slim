@@ -1,0 +1,22 @@
+- model_class = Recommend
+div class="page-header"
+  h1=t '.title', :default => [:'helpers.titles.edit', Settings.admin.title.edit.recommend], :model => model_class.model_name.human.titleize
+
+p
+  - if @recommend.photo_id.present? && @recommend.photo.image?
+    = image_tag @recommend.photo.decorate.image_url(:thumb)
+    br
+  strong= model_class.human_attribute_name(:photo_id) + ':'
+  br
+  = @recommend.photo_id
+
+= form_for [:admin, @recommend], url: { action: :edit }, html: { name: "back" } do |f|
+  = f.hidden_field :photo_id
+
+= form_for [:admin, @recommend], url: { action: "update" }, html: { name: "update"}, method: :patch do |f|
+  = f.hidden_field :photo_id
+
+.form-actions
+  input type="button" value="戻る" title="戻る" class="btn-primary" onclick="document.back.submit();"
+  '
+  input type="button" value="更新" title="更新" class="btn-primary" onclick="document.update.submit();"

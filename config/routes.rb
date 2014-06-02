@@ -11,7 +11,8 @@ Photonet::Application.routes.draw do
     resources :performers
     resources :groups
     resources :events
-    resources :recommends
+    resources :recommends, only: [:index, :update]
+    match "recommends/:id/edit" => "recommends#edit", via: [:get, :post, :patch], as: :recommends_edit
     resources :information_contents
   end
 

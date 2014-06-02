@@ -1,4 +1,11 @@
 - model_class = Recommend
 div class="page-header"
   h1=t '.title', :default => [:'helpers.titles.edit', Settings.admin.title.edit.recommend], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+
+= simple_form_for [:admin, @recommend], url: { action: :edit }, :html => { :class => "form-horizontal" } do |f|
+  = render 'admin/shared/error_messages', model: @recommend
+  = f.input :photo_id, :input_html => { :class => 'input-small' }, :as => :string, hint: "PhotoID"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary', name: "confirmation"
+    '
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_recommends_path, :class => 'btn'

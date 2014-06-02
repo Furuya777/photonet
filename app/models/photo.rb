@@ -1,6 +1,8 @@
 class Photo < ActiveRecord::Base
   belongs_to :event
-  
+
+  has_one :recommend
+
   has_many :photos_tags
   has_and_belongs_to_many :tags
   accepts_nested_attributes_for :photos_tags, allow_destroy: true
